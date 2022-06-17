@@ -1,0 +1,12 @@
+.household {
+    display: flex;
+}
+
+.householdContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    color: rgb(19, 121, 206);
+}

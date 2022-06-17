@@ -1,0 +1,8 @@
+.beverages{
+    display: flex;
+}
+
+.beveragesContainer{
+    display: flex;
+    flex-direction: column;
+}

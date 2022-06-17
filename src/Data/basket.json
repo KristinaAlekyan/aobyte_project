@@ -1,0 +1,7 @@
+[   {"id":1,"product_name":"Pennn","product_price":"200", "category": "Grocery", "image": "images/1.jpg"},
+    {"id":2,"product_name":"Bread","product_price":"200", "category": "Grocery", "image": "images/2.jpg"},
+    {"id":3,"product_name":"Peach","product_price":"300", "category": "Grocery", "image": "images/3.jpg"},
+    {"id":4,"product_name":"Chicken","product_price":"2000", "category": "Grocery", "image": "images/4.jpeg"},
+    {"id":5,"product_name":"Juice","product_price":"500", "category": "Grocery", "image": "images/5.png"}
+]
+  

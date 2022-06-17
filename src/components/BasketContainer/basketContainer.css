@@ -1,0 +1,44 @@
+.basketTitle{    
+    display: flex;
+    margin: auto;
+    color: rgb(19, 121, 206);;
+}
+
+.basketContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+.order{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.orderTotal{
+    display: flex;
+    align-self: center;
+    margin-right: 60px;
+}
+
+.orderButton button {
+    border: none;
+    outline: 0;
+    padding: 8px;
+    color: white;
+    background-color: rgb(19, 121, 206);
+    text-align: center;
+    cursor: pointer;
+    width: 80px;
+    font-size: 14px;
+}
+
+.orderCount{
+    display: flex;
+    align-self: center;
+    margin-right: 30px;
+}
+
+.orderButton button:hover {
+    opacity: 0.7;
+}
