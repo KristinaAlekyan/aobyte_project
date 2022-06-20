@@ -5,7 +5,7 @@ import '../Beverages/Beverages.css';
 function Beverages () {
     const [beverageProducts, setBeverageProducts] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3001/category/beverage',
+        fetch('http://localhost:5000/category/beverage',
 		{headers : { 
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'

@@ -5,7 +5,7 @@ import '../Househould/household.css';
 function Household () {
     const [housholdProducts, setHousholdProducts] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3001/category/household',
+        fetch('http://localhost:5000/category/household',
 		{headers : { 
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'

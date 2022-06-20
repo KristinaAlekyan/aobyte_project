@@ -6,7 +6,7 @@ import '../Groceries/Groceries.css';
 function Groceries (){
     const [groceryProducts, setGroceryProducts] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3001/category/grocery',
+        fetch('http://localhost:5000/category/grocery',
 		{headers : { 
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'

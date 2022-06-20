@@ -16,13 +16,35 @@ export default function Register() {
 
     function handleSubmit(event) {
         event.preventDefault();
-        
+
+        const data = {
+            "firstName" : firstName,
+            "lastName" : lastName,
+            "email" : email,
+            "password" : password,
+            "repeatPassword": repeatPassword
+        }
+        console.log("data", data);
+
+        //send data as the POST request
+        fetch('http://localhost:5000/registration', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            // Trying convert the React state to JSON and send it as the POST body
+            body: JSON.stringify(data)
+            }).then(function(response) {
+                console.log(response)
+                return response.json();
+        });
+  
     }
 
     return (
         <div className="Login">
         <Form onSubmit={handleSubmit}>
-            <Form.Group size="lg" controlId="name">
+            <Form.Group size="lg" controlId="firstName">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
                     autoFocus
@@ -31,7 +53,7 @@ export default function Register() {
                     onChange={(e) => setFirstName(e.target.value)}
                 />
             </Form.Group>
-            <Form.Group size="lg" controlId="name">
+            <Form.Group size="lg" controlId="lastName">
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control
                     autoFocus
@@ -66,7 +88,7 @@ export default function Register() {
                 />
             </Form.Group>
 
-            <Button onClick = {handleSubmit} block size="lg" type="submit" disabled={!validateForm()}>
+            <Button onClick = {handleSubmit} block="true" size="lg" type="submit" disabled={!validateForm()}>
             Register
             </Button>
         </Form>

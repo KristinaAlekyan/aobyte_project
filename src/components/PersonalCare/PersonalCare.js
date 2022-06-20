@@ -5,7 +5,7 @@ import '../PersonalCare/PersonalCare.css';
 function PersonalCare(){ 
     const [personalcareProducts, setPersonalcareProducts] = useState([])
     useEffect(() => {
-        fetch('http://localhost:3001/category/personalcare',
+        fetch('http://localhost:5000/category/personalcare',
 		{headers : { 
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'
