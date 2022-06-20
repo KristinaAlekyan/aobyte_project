@@ -30,6 +30,7 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<Main searchString={searchString} />}/>  
                 <Route exact path="/home" element={<Main searchString={searchString} />}/>
+                <Route exact path="/products" element={<Main searchString={searchString} />}/>
                 <Route path="/branches" element={<Branches/>}/>
                 <Route path="/about" element={<AboutUs/>}/>
                 <Route path="/login" element={<Login/>}/>

@@ -1,41 +1,30 @@
+import { useState, useEffect } from 'react';
 import Product from '../Product/Product';
 import '../Beverages/Beverages.css';
 
-const beveragesData =   [
-                            {
-                                "id": 15,
-                                "product_name":"Coca-Cola",
-                                "product_price":"9000",
-                                "category": "Beverages",
-                                "image": "/images/15.png"
-                            },
-                            {
-                                "id": 16,
-                                "product_name":"Orange juice",
-                                "product_price":"300",
-                                "category": "Beverages",
-                                "image": "/images/16.jpeg"
-                            },
-                            {
-                                "id": 18,
-                                "product_name":"Peach juice",
-                                "product_price":"400",
-                                "category": "Beverages",
-                                "image": "/images/1.png"
-                            }
-                        ];
-
 function Beverages () {
+    const [beverageProducts, setBeverageProducts] = useState([])
+    useEffect(() => {
+        fetch('http://localhost:3001/category/beverage',
+		{headers : { 
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		}})
+        .then((response) => response.json())
+        .then((res) => {
+            setBeverageProducts(res.data)
+        });        
+    })
     return (
         <div className = "beveragesContainer">
             <h1>Beverages</h1>
             <div className="beverages">
-                {beveragesData.map(product => 
+                {beverageProducts.map(product => 
                     <Product 
-                        key = {product.id}
-                        id = {product.id}
-                        product_name = {product.product_name} 
-                        product_price = {product.product_price}
+                        key = {product._id}
+                        id = {product._id}
+                        product_name = {product.name} 
+                        product_price = {product.price}
                         image = {product.image}
                     />
                 )}
