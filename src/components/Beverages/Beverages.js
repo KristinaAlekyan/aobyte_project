@@ -7,14 +7,7 @@ const beveragesData =   [
                                 "product_name":"Coca-Cola",
                                 "product_price":"9000",
                                 "category": "Beverages",
-                                "image": "/images/15.png"
-                            },
-                            {
-                                "id": 16,
-                                "product_name":"Orange juice",
-                                "product_price":"300",
-                                "category": "Beverages",
-                                "image": "/images/16.jpeg"
+                                "image": "/images/5.png"
                             },
                             {
                                 "id": 18,
