@@ -57,7 +57,7 @@ class Login extends React.Component {
                             onChange={(e) => this.updatePassword(e.target.value)}
                         />
                     </Form.Group>
-                    <Button block size="lg" type="submit" disabled={!this.validateForm()}
+                    <Button block="true" size="lg" type="submit" disabled={!this.validateForm()}
                             onClick={() => this.props.login(email, password)}>
                         Login
                     </Button>

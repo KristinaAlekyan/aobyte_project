@@ -18,11 +18,11 @@ export default function Register() {
         event.preventDefault();
 
         const data = {
-            "firstName" : firstName,
-            "lastName" : lastName,
-            "email" : email,
-            "password" : password,
-            "repeatPassword": repeatPassword
+            firstName : firstName,
+            lastName : lastName,
+            email : email,
+            password : password,
+            repeatPassword: repeatPassword
         }
         console.log("data", data);
 
@@ -35,7 +35,6 @@ export default function Register() {
             // Trying convert the React state to JSON and send it as the POST body
             body: JSON.stringify(data)
             }).then(function(response) {
-                console.log(response)
                 return response.json();
         });
   
