@@ -55,7 +55,7 @@ class Header extends React.Component {
                             <Link className="nav-link" to="/login"> Login </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/register"> Register </Link>
+                            <Link className="nav-link" to="/registration"> Registration </Link>
                         </li>
                     </ul>
                </div>

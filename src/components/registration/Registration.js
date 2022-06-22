@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "../Register/register.css";
+import "./registration.css";
 
 export default function Register() {
     const [firstName, setFirstName] = useState("");    
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");    
-    const [repeatPassword, setRepeatPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -22,7 +23,7 @@ export default function Register() {
             lastName : lastName,
             email : email,
             password : password,
-            repeatPassword: repeatPassword
+            confirmPassword: confirmPassword
         }
         console.log("data", data);
 
@@ -32,7 +33,7 @@ export default function Register() {
             headers: {
                 "Content-Type": "application/json"
             },
-            // Trying convert the React state to JSON and send it as the POST body
+            //  Convert the React state to JSON and send it as the POST body
             body: JSON.stringify(data)
             }).then(function(response) {
                 return response.json();
@@ -82,12 +83,12 @@ export default function Register() {
                 <Form.Label>Repeat Password</Form.Label>
                 <Form.Control
                     type="password"
-                    value={repeatPassword}
-                    onChange={(e) => setRepeatPassword(e.target.value)}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                 />
             </Form.Group>
 
-            <Button onClick = {handleSubmit} block="true" size="lg" type="submit" disabled={!validateForm()}>
+            <Button block="true" size="lg" type="submit" disabled={!validateForm()}>
             Register
             </Button>
         </Form>
