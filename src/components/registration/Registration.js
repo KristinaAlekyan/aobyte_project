@@ -25,7 +25,6 @@ export default function Register() {
             password : password,
             confirmPassword: confirmPassword
         }
-        console.log("data", data);
 
         //send data as the POST request
         if (password === confirmPassword){
@@ -36,12 +35,8 @@ export default function Register() {
             },
             //  Convert the React state to JSON and send it as the POST body
             body: JSON.stringify(data)
-            }).then(function(response) {
-                return response.json();
-        });
+            }).then((response) => response.json()).then((response) => console.log(response))
         }
-        
-  
     }
 
     return (

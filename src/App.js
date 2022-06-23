@@ -8,7 +8,7 @@ import Main from "./components/Main/Main";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import BasketContainer from "./components/BasketContainer/BasketConainer";
 import Login from "./components/Login/Login"
-import Registration from "./components/registration/Registration";
+import Registration from "./components/Registration/Registration";
 import Branches from "./components/Branches/Branches.js";
 import AboutUs from "./components/AboutUs/AboutUs.js";
 import Household from "./components/Househould/Househould";
@@ -33,7 +33,7 @@ function App() {
                 <Route exact path="/products" element={<Main searchString={searchString} />}/>
                 <Route path="/branches" element={<Branches/>}/>
                 <Route path="/about" element={<AboutUs/>}/>
-                <Route path="/login" element={<Login/>}/>
+                <Route path="/login" element={<Login />}/>
                 <Route path="/registration" element={<Registration/>}/>
                 <Route path="/basket" element={<BasketContainer/>}/>
                 <Route path="/category/household" element={<Household/>}/>
