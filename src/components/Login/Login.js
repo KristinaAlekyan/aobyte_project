@@ -15,6 +15,23 @@ export default function Login (){
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        const data = {
+            email : email,
+            password : password
+        }
+        
+        console.log("data", data);
+
+        //send data as the POST request
+        fetch('http://localhost:5000/login',
+        {headers : { 
+			'Content-Type': 'application/json',
+			'Accept': 'application/json'
+		}})
+        .then((response) => response.json())
+        .then((res) => {
+            console.log("Fetched user", res)
+        });
     }
 
     return (

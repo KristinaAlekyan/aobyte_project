@@ -28,7 +28,8 @@ export default function Register() {
         console.log("data", data);
 
         //send data as the POST request
-        fetch('http://localhost:5000/registration', {
+        if (password === confirmPassword){
+            fetch('http://localhost:5000/registration', {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json"
@@ -38,6 +39,8 @@ export default function Register() {
             }).then(function(response) {
                 return response.json();
         });
+        }
+        
   
     }
 
