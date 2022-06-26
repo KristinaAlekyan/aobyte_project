@@ -13,7 +13,7 @@ class ProductContainer extends React.Component {
 	} 
    
     componentDidMount() {
-        fetch('http://localhost:3001/products',
+        fetch('http://localhost:5000/products',
 		{headers : { 
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'

@@ -4,9 +4,9 @@ import '../Groceries/Groceries.css';
 
 
 function Groceries (){
-    const [groceryProducts, setGroceryProducts] = useState([])
+    const [groceryProducts, setGroceryProducts] = useState(null)
     useEffect(() => {
-        fetch('http://localhost:3001/category/grocery',
+        fetch('http://localhost:5000/category/grocery',
 		{headers : { 
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'
@@ -15,12 +15,13 @@ function Groceries (){
         .then((res) => {
             setGroceryProducts(res.data)
         });        
-    })
+    },[])
+    
     return (
         <div className = "groceriesContainer">
             <h1>Groceries</h1>
             <div className="groceries">
-                {groceryProducts.map(product => 
+                {groceryProducts? groceryProducts.map(product => 
                     <Product 
                         key = {product._id}
                         id = {product._id}
@@ -28,7 +29,7 @@ function Groceries (){
                         product_price = {product.price}
                         image = {product.image}
                     />
-                )}
+                ):""}
             </div>
         </div>
     )    

@@ -3,9 +3,9 @@ import Product from '../Product/Product';
 import '../Househould/household.css';
 
 function Household () {
-    const [housholdProducts, setHousholdProducts] = useState([])
+    const [housholdProducts, setHousholdProducts] = useState(null)
     useEffect(() => {
-        fetch('http://localhost:3001/category/household',
+        fetch('http://localhost:5000/category/household',
 		{headers : { 
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'
@@ -14,13 +14,13 @@ function Household () {
         .then((res) => {
             setHousholdProducts(res.data)
         });        
-    })
+    },[])
 
     return (
         <div className = "householdContainer">
             <h1>Household</h1>
             <div className="household">
-                {housholdProducts.map(product => 
+                {housholdProducts?housholdProducts.map(product => 
                     <Product 
                         key = {product._id}
                         id = {product._id}
@@ -28,7 +28,7 @@ function Household () {
                         product_price = {product.price}
                         image = {product.image}
                     />
-                )}
+                ):""}
             </div>
         </div>
     )

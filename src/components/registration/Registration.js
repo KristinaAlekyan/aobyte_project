@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import { useState } from "react";
+
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "../Register/register.css";
+import "./registration.css";
 
 export default function Register() {
     const [firstName, setFirstName] = useState("");    
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");    
-    const [repeatPassword, setRepeatPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -16,13 +17,37 @@ export default function Register() {
 
     function handleSubmit(event) {
         event.preventDefault();
+
+        const data = {
+            firstName : firstName,
+            lastName : lastName,
+            email : email,
+            password : password,
+            confirmPassword: confirmPassword
+        }
+        console.log("data", data);
+
+        //send data as the POST request
+        if (password === confirmPassword){
+            fetch('http://localhost:5000/registration', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            //  Convert the React state to JSON and send it as the POST body
+            body: JSON.stringify(data)
+            }).then(function(response) {
+                return response.json();
+        });
+        }
         
+  
     }
 
     return (
         <div className="Login">
         <Form onSubmit={handleSubmit}>
-            <Form.Group size="lg" controlId="name">
+            <Form.Group size="lg" controlId="firstName">
                 <Form.Label>First Name</Form.Label>
                 <Form.Control
                     autoFocus
@@ -31,7 +56,7 @@ export default function Register() {
                     onChange={(e) => setFirstName(e.target.value)}
                 />
             </Form.Group>
-            <Form.Group size="lg" controlId="name">
+            <Form.Group size="lg" controlId="lastName">
                 <Form.Label>Last Name</Form.Label>
                 <Form.Control
                     autoFocus
@@ -61,12 +86,12 @@ export default function Register() {
                 <Form.Label>Repeat Password</Form.Label>
                 <Form.Control
                     type="password"
-                    value={repeatPassword}
-                    onChange={(e) => setRepeatPassword(e.target.value)}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                 />
             </Form.Group>
 
-            <Button onClick = {handleSubmit} block size="lg" type="submit" disabled={!validateForm()}>
+            <Button block="true" size="lg" type="submit" disabled={!validateForm()}>
             Register
             </Button>
         </Form>

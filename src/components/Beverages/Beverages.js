@@ -3,9 +3,9 @@ import Product from '../Product/Product';
 import '../Beverages/Beverages.css';
 
 function Beverages () {
-    const [beverageProducts, setBeverageProducts] = useState([])
+    const [beverageProducts, setBeverageProducts] = useState(null)
     useEffect(() => {
-        fetch('http://localhost:3001/category/beverage',
+        fetch('http://localhost:5000/category/beverage',
 		{headers : { 
 			'Content-Type': 'application/json',
 			'Accept': 'application/json'
@@ -14,12 +14,13 @@ function Beverages () {
         .then((res) => {
             setBeverageProducts(res.data)
         });        
-    })
+    },[])
+    
     return (
         <div className = "beveragesContainer">
             <h1>Beverages</h1>
             <div className="beverages">
-                {beverageProducts.map(product => 
+                {beverageProducts?beverageProducts.map(product => 
                     <Product 
                         key = {product._id}
                         id = {product._id}
@@ -27,7 +28,7 @@ function Beverages () {
                         product_price = {product.price}
                         image = {product.image}
                     />
-                )}
+                ):""}
             </div>
         </div>
     )
