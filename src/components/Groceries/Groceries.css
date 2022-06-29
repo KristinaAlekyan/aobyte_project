@@ -1,8 +1,0 @@
-.groceries{
-    display: flex;
-}
-
-.groceriesContainer{
-    display: flex;
-    flex-direction: column;
-}

@@ -1,6 +1,6 @@
-import React from 'react';
-import BasketItem from '../BasketItem/BasketItem';
-import '../BasketContainer/basketContainer.css';
+import React from "react";
+import BasketItem from "../BasketItem/BasketItem";
+import "../BasketContainer/basketContainer.css";
 import basketData from "../../Data/basket.json";
 
 class BasketContainer extends React.Component {
@@ -12,7 +12,7 @@ class BasketContainer extends React.Component {
     }
 
     basketProductRemove = (id) => {
-        const newBasketProduct = [...this.state.basketProduct].filter((i) => i.id !== id );
+        const newBasketProduct = [...this.state.basketProduct].filter((i) => i.id !== id);
         this.setState({
             basketProduct: newBasketProduct
         })

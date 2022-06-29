@@ -1,21 +1,22 @@
-.basketTitle{    
+.basketTitle {
     display: flex;
     margin: auto;
-    color: rgb(19, 121, 206);;
+    color: rgb(19, 121, 206);
+    ;
 }
 
-.basketContainer{
+.basketContainer {
     display: flex;
     flex-direction: column;
 }
 
-.order{
+.order {
     display: flex;
     justify-content: flex-end;
     margin-top: 20px;
 }
 
-.orderTotal{
+.orderTotal {
     display: flex;
     align-self: center;
     margin-right: 60px;
@@ -33,7 +34,7 @@
     font-size: 14px;
 }
 
-.orderCount{
+.orderCount {
     display: flex;
     align-self: center;
     margin-right: 30px;

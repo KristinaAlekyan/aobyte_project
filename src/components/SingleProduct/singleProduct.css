@@ -1,9 +1,8 @@
-.card {
+.singleProduct {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    width: 120px;
+    width: 300px;
     height: 200px;
-    margin-top: 50px;
-    margin-left: 10px;
+    margin: 30px auto;
     text-align: center;
     font-family: arial;
 }
@@ -15,7 +14,7 @@
     font-size: 14px;
 }
 
-.card button {
+.singleProduct button {
     border: none;
     outline: 0;
     padding: 8px;
@@ -27,18 +26,33 @@
     font-size: 14px;
 }
 
-.card button:hover {
+.singleProduct button:hover {
     opacity: 0.7;
 }
 
-.delete {
+.heart {
     display: flex;
     justify-content: flex-start;
-    margin: 5px 10px;
+    margin: 10px 10px;
 }
 
 .cardImage img {
     width: 90px;
     height: 90px;
     min-height: 70px;
+}
+
+.heartDelete {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.delete button {
+    border: none;
+    outline: 0;
+    width: 5px;
+    color: rgb(19, 121, 206);
+    background-color: white;
+    margin-left: 10px;
 }
