@@ -1,8 +1,6 @@
-import React from "react";
-
-export default function Branches(){
-    return(
-        <div> 
+function Branches() {
+    return (
+        <div>
             <h1>We are located in Yerevan at the following addresses:</h1>
             <ul>
                 <li>Hanrapetutyan 5th st 1/15 B</li>
@@ -14,3 +12,5 @@ export default function Branches(){
         </div>
     );
 };
+
+export default Branches

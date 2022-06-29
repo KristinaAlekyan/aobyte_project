@@ -1,4 +1,4 @@
-.search{
+.search {
     margin-left: 70px;
 }
 
@@ -19,30 +19,42 @@
     position: absolute;
     background-color: #f1f1f1;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 1;
 }
-  
+
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
-  
+
 .dropdown-content a:hover {
     background-color: #ddd;
 }
-  
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
-  
+
 .dropdown:hover .dropbtn {
     background-color: rgb(108, 179, 236);
-} 
+}
 
 .userDropdown {
     margin-right: 80px;
     margin-left: 30px;
+}
+
+.addProduct {
+    border: none;
+    outline: 0;
+    padding: 8px;
+    color: white;
+    background-color: rgb(19, 121, 206);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 14px;
 }

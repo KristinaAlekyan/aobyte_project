@@ -8,11 +8,11 @@
     margin-top: 3px;
     margin-left: 40px;
     text-align: center;
-    font-family: arial; 
-    margin: auto;   
+    font-family: arial;
+    margin: auto;
 }
 
-.cardBasketImage{
+.cardBasketImage {
     margin: 10px;
 }
 
@@ -38,33 +38,34 @@
     opacity: 0.7;
 }
 
-.cardBasketProp{
+.cardBasketProp {
     display: flex;
     justify-content: space-between;
     margin-left: 10px;
     width: 80%;
 }
 
-.cardBasketButtons{
+.cardBasketButtons {
     display: flex;
     flex-direction: row;
 }
 
-.cardBasketName{
+.cardBasketName {
     display: flex;
     width: 40%;
-    align-self: center;    
+    align-self: center;
     font-size: 16px;
 }
 
-.cardBasketPrice{
+.cardBasketPrice {
     display: flex;
     width: 30%;
     margin-right: 30px;
     align-self: center;
 }
 
-input, textarea {
+input,
+textarea {
     border: 1px solid #eeeeee;
     box-sizing: border-box;
     margin: 0;
@@ -83,7 +84,7 @@ input::-webkit-inner-spin-button {
 }
 
 .input-group {
-    margin: auto ;
+    margin: auto;
 
 }
 
@@ -124,7 +125,7 @@ input[type="number"] {
     -webkit-appearance: none;
 }
 
-.cardBasketButton{
+.cardBasketButton {
     display: flex;
     align-self: center;
 }
@@ -135,13 +136,13 @@ input[type="number"] {
     margin: 5px 7px;
 }
 
-img{
+img {
     width: 70px
 }
 
-.order{
+.order {
     display: flex;
     justify-content: flex-end;
     margin-right: 20%;
-    margin-bottom: 10px;  
+    margin-bottom: 10px;
 }

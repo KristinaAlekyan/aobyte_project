@@ -1,9 +1,9 @@
 import ProductContainer from "../ProductContainer/ProductContainer"
-import './main.css';
+import "./main.css";
 
-function Main ({searchString}) {	
-	return (	
-		<ProductContainer searchString={searchString}/>
+function Main({ searchString }) {
+	return (
+		<ProductContainer searchString={searchString} />
 	)
 }
 
