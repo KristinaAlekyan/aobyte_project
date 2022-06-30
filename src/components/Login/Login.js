@@ -28,7 +28,6 @@ function Login() {
             body: JSON.stringify(data)
         }).then((response) => response.json()).then((response) => {
             console.log(response);
-            //setLogedUser({email})
         })
     }
 

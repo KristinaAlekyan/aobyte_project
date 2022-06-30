@@ -21,7 +21,10 @@ function Category() {
     return (
         <div className="categoryContainer">
             <h1 className="category">
-                {category ? category.map(category => category.name) : ""}
+                
+                {category ? category.map(category => 
+                    <option >{category.name}</option>
+                ) : ""}
             </h1>
         </div>
     )

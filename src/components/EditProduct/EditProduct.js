@@ -9,9 +9,17 @@ function EditProduct() {
     const [price, setPrice] = useState("");
     const [image, setImage] = useState("");
     const [categories, setCategories] = useState([]);
-    const [selectedCategory, setSelectedCategory] = useState(null);
 
     const id = useParams().id;
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        fetch('http://localhost:5000/categories')
+            .then((response) => response.json())
+            .then((response) => setCategories(response.data))
+    }, []);
+
+    const [selectedCategory, setSelectedCategory] = useState(null);
 
     useEffect(() => {
         fetch(`http://localhost:5000/products/${id}`)
@@ -20,24 +28,23 @@ function EditProduct() {
                 setName(response.name);
                 setPrice(response.price);
                 setImage(response.image);
+                setSelectedCategory(response.category);
             })
-    }, [id]);
+    }, []);
 
-    useEffect(() => {
-        fetch('http://localhost:5000/categories')
-            .then((response) => response.json())
-            .then((response) => setCategories(response.data))
-    }, [])
-
-    const navigate = useNavigate();
-
-    const onEditProduct = (event) => {
+    const onSelectCategory = (event) => {
         event.preventDefault();
-        console.log("Befor Save", name)
+        const selected = categories.find(i => i.name === event.target.value);
+        setSelectedCategory(selected);
+    }
+
+    const onSaveProduct = (event) => {
+        event.preventDefault();
         const data = {
             name: name,
             price: price,
-            image: image
+            image: image,
+            category: selectedCategory
         }
 
         fetch(`http://localhost:5000/products/${id}`, {
@@ -49,11 +56,6 @@ function EditProduct() {
         navigate("/products")
     }
 
-    const onSelectCategory = (event) => {
-        event.preventDefault();
-        console.log(event.target.value);
-        setSelectedCategory(event.target.value);
-    }
 
     return (
         <div className="addProductContainer" >
@@ -74,7 +76,7 @@ function EditProduct() {
             <div>
                 <input value={image} onChange={(e) => setImage(e.target.value)} />
             </div>
-            <p><button onClick={onEditProduct}>Save</button></p>
+            <p><button onClick={onSaveProduct}>Save</button></p>
         </div>
     )
 }

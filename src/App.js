@@ -15,7 +15,7 @@ import Category from "./components/Category/Category";
 import ProductContainer from "./components/ProductContainer/ProductContainer";
 import SingleProduct from "./components/SingleProduct/SingleProduct"
 import AddProduct from './components/AddProduct/AddProduct';
-import EditProduct from './components/Edit/EditProduct';
+import EditProduct from './components/EditProduct/EditProduct';
 
 function App() {
     const [searchString, setSearchString] = useState("");

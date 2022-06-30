@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 function Header(props) {
     const [categories, setCategories] = useState([]);
+    const [isLogedIn] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:5000/categories',
@@ -78,6 +79,13 @@ function Header(props) {
                     <li className="nav-item">
                         <Link className="nav-link" to="/registration"> Registration </Link>
                     </li>
+
+                    {isLogedIn?
+                        (<li className="nav-item">
+                            <Link className="nav-link" to="/home"> Logout </Link>
+                        </li>):
+                        ""
+                    }
                 </ul>
             </div>
         </div>

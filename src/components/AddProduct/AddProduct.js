@@ -11,7 +11,6 @@ function AddProduct() {
     const [selectedCategory, setSelectedCategory] = useState(null);
 
     const navigate = useNavigate();
-
     useEffect(() => {
         fetch('http://localhost:5000/categories')
             .then((response) => response.json())
@@ -40,8 +39,8 @@ function AddProduct() {
 
     const onSelectCategory = (event) => {
         event.preventDefault();
-        console.log(event.target.value);
-        setSelectedCategory(event.target.value);
+        const selected = categories.find(i => i.name === event.target.value)
+        setSelectedCategory(selected);
     }
 
     return (
@@ -54,6 +53,7 @@ function AddProduct() {
             </div>
             <div>
                 <select onChange={onSelectCategory}>
+                    <option >select category</option>
                     {categories.map(category =>
                         <option key={category._id} value={category.name}>{category.name}</option>
                     )}
