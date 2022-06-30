@@ -11,6 +11,7 @@ function EditProduct() {
     const [categories, setCategories] = useState([]);
 
     const id = useParams().id;
+
     const navigate = useNavigate();
 
     useEffect(() => {

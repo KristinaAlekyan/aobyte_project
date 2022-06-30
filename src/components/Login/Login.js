@@ -1,4 +1,8 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
+import { login } from "../../redux/userSlice";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -7,6 +11,10 @@ import "../Login/login.css";
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
+    const dispatch = useDispatch();
+
+    const navigate = useNavigate()
 
     const validateForm = () => {
         return (email.length > 0 && password.length > 0)
@@ -29,6 +37,11 @@ function Login() {
         }).then((response) => response.json()).then((response) => {
             console.log(response);
         })
+
+        dispatch(login());
+
+        navigate("/home")
+
     }
 
     return (

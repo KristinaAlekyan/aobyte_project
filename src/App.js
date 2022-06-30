@@ -2,6 +2,8 @@ import './App.css';
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useState } from "react";
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
@@ -24,25 +26,27 @@ function App() {
     }
 
     return (
-        <Router >
-            <Header onChange={onSearchStringChange} value={searchString} />
+        <Provider store={store}>
+            <Router >
+                <Header onChange={onSearchStringChange} value={searchString} />
 
-            <Routes>
-                <Route exact path="/" element={<Main searchString={searchString} />} />
-                <Route exact path="/home" element={<Main searchString={searchString} />} />
-                <Route exact path="/products" element={<Main searchString={searchString} />} />
-                <Route exact path="/addProduct" element={<AddProduct />} />
-                <Route exact path="/editProduct/:id" element={<EditProduct />} />
-                <Route exact path="/products/:id" element={<SingleProduct />} />
-                <Route exact path="/branches" element={<Branches />} />
-                <Route exact path="/about" element={<AboutUs />} />
-                <Route exact path="/login" element={<Login />} />
-                <Route exact path="/registration" element={<Registration />} />
-                <Route exact path="/basket" element={<BasketContainer />} />
-                <Route exact path="/categories" element={<Category />} />
-                <Route path="/categories/:categoryId" element={<ProductContainer />} />
-            </Routes>
-        </Router>
+                <Routes>
+                    <Route exact path="/" element={<Main searchString={searchString} />} />
+                    <Route exact path="/home" element={<Main searchString={searchString} />} />
+                    <Route exact path="/products" element={<Main searchString={searchString} />} />
+                    <Route exact path="/addProduct" element={<AddProduct />} />
+                    <Route exact path="/editProduct/:id" element={<EditProduct />} />
+                    <Route exact path="/products/:id" element={<SingleProduct />} />
+                    <Route exact path="/branches" element={<Branches />} />
+                    <Route exact path="/about" element={<AboutUs />} />
+                    <Route exact path="/login" element={<Login />} />
+                    <Route exact path="/registration" element={<Registration />} />
+                    <Route exact path="/basket" element={<BasketContainer />} />
+                    <Route exact path="/categories" element={<Category />} />
+                    <Route path="/categories/:categoryId" element={<ProductContainer />} />
+                </Routes>
+            </Router>
+        </Provider>
     );
 }
 

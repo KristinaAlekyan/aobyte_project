@@ -1,10 +1,15 @@
 import "../Header/header.css";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+
+import { logedInSelector, login } from "../../redux/userSlice";
 import { useState, useEffect } from "react";
 
 function Header(props) {
     const [categories, setCategories] = useState([]);
-    const [isLogedIn] = useState(false);
+    const isLogedIn = useSelector(logedInSelector);
+
+    const dispatch = useDispatch();
 
     useEffect(() => {
         fetch('http://localhost:5000/categories',
@@ -73,18 +78,22 @@ function Header(props) {
                             </svg>
                         </Link>
                     </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/login"> Login </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/registration"> Registration </Link>
-                    </li>
+                    {!isLogedIn ?
+                        <>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/login"> Login </Link>
+                            </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/registration"> Registration </Link>
+                            </li>
+                        </> : <></>
+                    }
 
-                    {isLogedIn?
+
+                    {isLogedIn ?
                         (<li className="nav-item">
-                            <Link className="nav-link" to="/home"> Logout </Link>
-                        </li>):
-                        ""
+                            <Link className="nav-link" to="/" onClick={() => dispatch(login())}> Logout </Link>
+                        </li>) : <></>
                     }
                 </ul>
             </div>
