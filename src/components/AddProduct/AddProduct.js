@@ -34,7 +34,8 @@ function AddProduct() {
         }).then((response) => response.json())
             .then((response) => console.log(response))
 
-        navigate("/products")
+        navigate("/products");
+        window.location.reload(true);
     }
 
     const onSelectCategory = (event) => {
