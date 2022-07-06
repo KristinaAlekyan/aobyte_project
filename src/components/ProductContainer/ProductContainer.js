@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import { BsFillArrowUpCircleFill, BsFillArrowDownCircleFill  } from "react-icons/bs";
 import Product from "../Product/Product";
 
-function ProductContainer({ searchString }) {
+function ProductContainer({ searchString, category }) {
 	const [products, setProducts] = useState([]);
 	const [sort, setSort] = useState('')
 	
-
 	useEffect(() => {
-		fetch(`http://localhost:5000/products?sort=${sort}&search=`,
+		fetch(`http://localhost:5000/products`,
 			{
 				headers: {
 					'Content-Type': 'application/json',
@@ -19,7 +18,36 @@ function ProductContainer({ searchString }) {
 			.then((res) => {
 				setProducts(res.data)
 			});
+	}, [])
+	
+	useEffect(() => {
+		setTimeout(() => {
+            fetch(`http://localhost:5000/products?sort=${sort}`,
+			{
+				headers: {
+					'Content-Type': 'application/json',
+					'Accept': 'application/json'
+				}
+			})
+			.then((response) => response.json())
+			.then((res) => {
+				setProducts(res.data)
+			});
+        }, 0)
+		
 	}, [sort])
+	
+	
+	/*useEffect(() => {
+		setTimeout(() => {
+            fetch(`http://localhost:5000/products?category=${category._id}`)
+			.then((response) => response.json())
+			.then((res) => {
+				setProducts(res.data)
+			});
+        }, 0)
+		
+	}, [category])*/
 
 	let filteredData = products;
 
@@ -38,8 +66,9 @@ function ProductContainer({ searchString }) {
 					<Product
 						key={product._id}
 						id={product._id}
-						product_name={product.name}
+						product_name={product.name}						
 						product_price={product.price}
+						product_category={product.category.name}
 						image={product.image}
 					/>
 				) : <span>No Results!</span>

@@ -2,30 +2,29 @@ import "../Header/header.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
-import { logedInSelector, login } from "../../redux/userSlice";
+import { authSelector, userSelector, logout } from "../../redux/userSlice";
 import { useState, useEffect } from "react";
 
-function Header(props) {
+function Header({setCategory, value, onChange}) {
     const [categories, setCategories] = useState([]);
-    const isLogedIn = useSelector(logedInSelector);
-
+    const isAuth = useSelector(authSelector);
     const dispatch = useDispatch();
 
+    const navigate = useNavigate();
+    const userData = useSelector(userSelector);
+
+    const logoutHandleClick = () => {
+        dispatch(logout());
+        window.localStorage.removeItem('token');
+    };
+
     useEffect(() => {
-        fetch('http://localhost:5000/categories',
-            {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
-            })
+        fetch('http://localhost:5000/categories')
             .then((response) => response.json())
             .then((res) => {
                 setCategories(res.data)
             });
-    }, [])
-
-    const navigate = useNavigate();
+    }, [])    
 
     return (
         <div className="d-flex flex-row justify-content-between ">
@@ -44,9 +43,9 @@ function Header(props) {
                             <div className="dropbtn" >Category</div>
                             <div className="dropdown-content">
                                 {categories.map(category =>
-                                    <Link to="/category/" key={category._id} >
+                                    <div onClick={()=> {setCategory(category); navigate(`/products?category=${category._id}`)}} key={category._id} >
                                         <option >{category.name}</option>
-                                    </Link>
+                                    </div>
                                 )}
                             </div>
                         </div>
@@ -59,9 +58,9 @@ function Header(props) {
                     <li>
                         <input className="search"
                             type="text"
-                            onChange={props.onChange}
+                            onChange={onChange}
                             placeholder="Search..."
-                            value={props.value}
+                            value={value}
                         />
                     </li>
                     <li>
@@ -78,22 +77,24 @@ function Header(props) {
                             </svg>
                         </Link>
                     </li>
-                    {!isLogedIn ?
-                        <>
+                    {isAuth ?
+                        (<>
+
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/" onClick={logoutHandleClick}> Logout </Link>
+                            </li>
+                            <li>{`Hi `+ userData.user.firstName}</li>
+                            
+
+                        </>):
+                        (<>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/login"> Login </Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/registration"> Registration </Link>
                             </li>
-                        </> : <></>
-                    }
-
-
-                    {isLogedIn ?
-                        (<li className="nav-item">
-                            <Link className="nav-link" to="/" onClick={() => dispatch(login())}> Logout </Link>
-                        </li>) : <></>
+                        </>)
                     }
                 </ul>
             </div>

@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./registration.css";
+import { authSelector, fetchRegister } from "../../redux/userSlice";
 
 function Register() {
     const [firstName, setFirstName] = useState("");
@@ -14,35 +16,34 @@ function Register() {
 
     const navigate = useNavigate()
 
-    function validateForm() {
+    const validateForm = () => {
         return email.length > 0 && password.length > 0;
     }
 
-    function handleSubmit(event) {
+    const dispatch = useDispatch();
+    const isAuth = useSelector(authSelector);
+
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         const data = {
             firstName: firstName,
             lastName: lastName,
             email: email,
-            password: password,
-            confirmPassword: confirmPassword
-        }
+            password: password
+        };
 
-        //send data as the POST request
         if (password === confirmPassword) {
-            fetch('http://localhost:5000/register', {
-                method: 'POST',
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                //  Convert the React state to JSON and send it as the POST body
-                body: JSON.stringify(data)
-            }).then((response) => response.json())
-                .then((response) => console.log(response))
+            const user = dispatch(fetchRegister(data));
+            if (user.payload && user.payload.token) {
+                localStorage.setItem('token', user.payload.token);
+            }
         }
+    }
 
-        navigate("/login")
+    if (isAuth) {
+        navigate('/')
     }
 
     return (

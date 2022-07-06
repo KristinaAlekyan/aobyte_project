@@ -31,7 +31,7 @@ function EditProduct() {
                 setImage(response.image);
                 setSelectedCategory(response.category);
             })
-    }, []);
+    }, [id]);
 
     const onSelectCategory = (event) => {
         event.preventDefault();

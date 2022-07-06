@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { login } from "../../redux/userSlice";
+import { authSelector, fetchLogin } from "../../redux/userSlice";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -14,34 +14,32 @@ function Login() {
 
     const dispatch = useDispatch();
 
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const isAuth = useSelector(authSelector);
 
     const validateForm = () => {
         return (email.length > 0 && password.length > 0)
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
+
         const data = {
             email: email,
             password: password
         }
 
-        fetch('http://localhost:5000/login', {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json"
-            },
-            //  Convert the React state to JSON and send it as the POST body
-            body: JSON.stringify(data)
-        }).then((response) => response.json()).then((response) => {
-            console.log(response);
-        })
+        const user = dispatch(fetchLogin(data));
 
-        dispatch(login());
+        if (user.payload && user.payload.token) {
+            console.log("user", user)
+            localStorage.setItem('token', user.payload.token);
+        }
+    }
 
-        navigate("/home")
-
+    if (isAuth) {
+        navigate('/products')
     }
 
     return (
